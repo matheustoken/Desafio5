@@ -39,7 +39,7 @@ public class OrderService {
     @Transactional(readOnly = true)
     public OrderDTO findById(Long id) {
         Order order = repository.findById(id).orElseThrow(
-                () -> new ResourceNotFoundException("Recurso não encontrado"));
+                () -> new ResourceNotFoundException("Recurso não encontrado, nem Admin e nem cliente."));
         authService.validateSelfOrAdmin(order.getClient().getId());
         return new OrderDTO(order);
     }
