@@ -134,6 +134,14 @@ public class User implements UserDetails {
         return Objects.equals(id, user.id);
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public int hashCode() {
         return id != null ? id.hashCode() : 0;
