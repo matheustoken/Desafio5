@@ -23,40 +23,38 @@ public class UserService implements UserDetailsService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		List<UserDetailsProjection> result = userRepository.searchUserAndRolesByEmail(username);
 		if (result.size() == 0) {
 			throw new UsernameNotFoundException("Email not found");
 		}
-		
+
 		User user = new User();
 		user.setEmail(result.get(0).getUsername());
 		user.setPassword(result.get(0).getPassword());
 		for (UserDetailsProjection projection : result) {
 			user.addRole(new Role(projection.getRoleId(), projection.getAuthority()));
 		}
-		
+
 		return user;
 	}
-	
-	protected User authenticated() {
+	protected User authenticated(){
 		try {
 			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 			Jwt jwtPrincipal = (Jwt) authentication.getPrincipal();
 			String username = jwtPrincipal.getClaim("username");
-			return repository.findByEmail(username).get();
-		}
-		catch (Exception e) {
-			throw new UsernameNotFoundException("Invalid user");
+			return userRepository.findByEmail(username).get();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
 		}
 	}
-	
 	@Transactional(readOnly = true)
-	public UserDTO getMe() {
-		User entity = authenticated();
-		return new UserDTO(entity);
+	public UserDTO getMe(){
+		User user = authenticated();
+		return new UserDTO(user);
 	}
+
 }

@@ -15,12 +15,12 @@ import com.devsuperior.dscommerce.services.UserService;
 public class UserController {
 
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_CLIENT')")
     @GetMapping(value = "/me")
-    public ResponseEntity<UserDTO> getMe() {
-    	UserDTO dto = service.getMe();
+    public ResponseEntity<UserDTO> findMe() {
+    	UserDTO dto = userService.getMe();
         return ResponseEntity.ok(dto);
     }
 }
