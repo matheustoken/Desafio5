@@ -52,13 +52,13 @@ public class OrderService {
     	order.setMoment(Instant.now());
     	order.setStatus(OrderStatus.WAITING_PAYMENT);
     	
-    	User user = userService.authenticated();
-    	order.setClient(user);
-    	
+    	 User user = userService.authenticated();
+    	 order.setClient(user);
+
     	for (OrderItemDTO itemDto : dto.getItems()) {
     		Product product = productRepository.getReferenceById(itemDto.getProductId());
-    		OrderItem item = new OrderItem(order, product, itemDto.getQuantity(), product.getPrice());
-    		order.getItems().add(item);
+    		OrderItem Item = new OrderItem(order, product, itemDto.getQuantity(), product.getPrice());
+    		order.getItems().add(Item);
     	}
     	
     	repository.save(order);
