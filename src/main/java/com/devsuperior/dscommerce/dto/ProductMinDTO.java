@@ -38,4 +38,20 @@ public class ProductMinDTO {
     public String getImgUrl() {
         return imgUrl;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
