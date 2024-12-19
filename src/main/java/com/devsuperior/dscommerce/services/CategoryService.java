@@ -18,7 +18,7 @@ public class CategoryService {
 
     @Transactional(readOnly = true)
     public List<CategoryDTO> findAll() {
-        List<Category> result = repository.findAll();
-        return result.stream().map(x -> new CategoryDTO(x)).toList();
+        List<Category> Result = repository.findAll();
+        return Result.stream().map(x -> new CategoryDTO(x)).toList();
     }
 }
