@@ -63,6 +63,26 @@ public class OrderDTO {
 		return payment;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setPayment(PaymentDTO payment) {
+		this.payment = payment;
+	}
+
+	public void setClient(ClientDTO client) {
+		this.client = client;
+	}
+
+	public void setStatus(OrderStatus status) {
+		this.status = status;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
+
 	public List<OrderItemDTO> getItems() {
 		return items;
 	}
@@ -70,7 +90,7 @@ public class OrderDTO {
 	public Double getTotal() {
 		double sum = 0.0;
 		for (OrderItemDTO item : items) {
-			sum += item.getSubTotal();
+			sum =sum+ item.getSubTotal();
 		}
 		return sum;
 	}

@@ -26,4 +26,12 @@ public class PaymentDTO {
 	public Instant getMoment() {
 		return moment;
 	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public void setMoment(Instant moment) {
+		this.moment = moment;
+	}
 }

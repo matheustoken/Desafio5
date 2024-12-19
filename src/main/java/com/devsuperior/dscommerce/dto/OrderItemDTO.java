@@ -49,4 +49,24 @@ public class OrderItemDTO {
 	public String getImgUrl() {
 		return imgUrl;
 	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 }
